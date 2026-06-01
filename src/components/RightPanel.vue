@@ -40,6 +40,20 @@
 
     <div class="panel-content">
       <div v-if="activeTab === 'panorama'" class="panorama-section">
+        <div v-if="attraction.panoramaUrl" class="panorama-iframe-wrapper">
+          <iframe
+            :src="attraction.panoramaUrl"
+            width="100%"
+            height="300"
+            style="border:0; border-radius: 8px;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div v-else class="panorama-placeholder">
+          <p>暂无全景数据</p>
+        </div>
         <button class="panorama-button" @click="$emit('enter-panorama')">
           📷 进入360°全景
         </button>
@@ -284,7 +298,19 @@ const tabs = [
 
 .panorama-section {
   text-align: center;
+  padding: 20px;
+}
+
+.panorama-iframe-wrapper {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.panorama-placeholder {
   padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
 }
 
 .panorama-button {

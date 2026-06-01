@@ -8,6 +8,7 @@ export interface Attraction {
   fullDesc: string
   images: string[]
   panorama?: string
+  panoramaUrl?: string
   openTime: string
   ticketPrice: string
   bestSeason: string
